@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Post from './Post'
 import CommentSection from '../CommentSection/CommentSection'
+import './PostContainer.css'
 
 const PostContainer = ({ post }) => {
   return (
-    <div>
+    <div className="post-container">
       <Post
         thumbnailUrl={post.thumbnailUrl}
         username={post.username}

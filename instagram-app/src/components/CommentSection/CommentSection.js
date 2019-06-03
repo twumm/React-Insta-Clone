@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment';
 import Comment from './Comment';
 
 const CommentSection = ({ postTime, comments }) => {
@@ -23,7 +24,7 @@ const CommentSection = ({ postTime, comments }) => {
       }
 
       <div>
-        <p>{postTime}</p>
+        <p>{moment(postTime).startOf('day').fromNow()} ago</p>
       </div>
       
       <div>

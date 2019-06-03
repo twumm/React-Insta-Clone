@@ -1,0 +1,14 @@
+.post-container {
+  margin: 0 auto;
+  /* width: 70%; */
+}
+
+.post-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.post-user-info img {
+  border-radius: 50%;
+  margin: 0 15px;
+}

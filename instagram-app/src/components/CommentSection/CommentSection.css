@@ -1,0 +1,17 @@
+.user-comment {
+  display: flex;
+  align-items: center;
+}
+
+.user-comment h6 {
+  margin-right: 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.user-comment p {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
