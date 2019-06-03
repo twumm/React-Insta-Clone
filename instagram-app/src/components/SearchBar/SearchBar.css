@@ -2,10 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 26px 20px;
-  border-bottom: 1px solid rgba(0,0,0,.0975);
-  height: 23px;
-  background-color: white;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .logo-section {
@@ -20,10 +18,29 @@
   width: 1px;
 }
 
+.search-section input {
+  width: 200px;
+  background-color: #FAFAFA;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  height: 25px;
+}
+
+.search-section input::placeholder {
+  text-align: center;
+  color: #999999;
+  letter-spacing: 1px;
+}
+
 .user-activity-section {
   display: flex;
 }
 
-.user-activity-section div {
-  padding-left: 20px;
+.user-activity-section img {
+  padding-left: 30px;
+  border: 2px;
 }
+
+.user-activity-section object {
+  color: red;
+} 

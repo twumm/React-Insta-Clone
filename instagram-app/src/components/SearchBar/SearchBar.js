@@ -12,11 +12,11 @@ const SearchBar = ({ onSearchInputChange }) => {
     <div className="search-bar">
       <div className="logo-section">
         <div>
-          <img src={instagramLogo} width={25} alt="Instagram" />
+          <img src={instagramLogo} width={28} alt="Instagram" />
         </div>
         <div className="logo-bar"></div>
         <div>
-          <img src={instagramTextLogo} width={100} alt="Instagram" />
+          <img src={instagramTextLogo} width={120} alt="Instagram" />
         </div>
       </div>
 
@@ -30,13 +30,14 @@ const SearchBar = ({ onSearchInputChange }) => {
 
       <div className="user-activity-section">
         <div>
-          <img src={compass} width={30} alt="Location" />
+          <img src={compass} width={25} alt="Location" />
+          {/* <object type="image/svg+xml" width={25} data={compass} alt="Location">Some</object> */}
         </div>
         <div>
-          <img src={like} width={30} alt="Like" />
+          <img src={like} width={25} alt="Like" />
         </div>
         <div>
-          <img src={profile} width={30} alt="Profile" />
+          <img src={profile} width={25} alt="Profile" />
         </div>        
       </div>
     </div>
