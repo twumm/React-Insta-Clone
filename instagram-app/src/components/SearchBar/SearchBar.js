@@ -5,16 +5,18 @@ import instagramLogo from '../../assets/img/instagram.svg'
 import compass from '../../assets/img/compass.svg'
 import like from '../../assets/img/heart.svg'
 import profile from '../../assets/img/profile.svg'
+import './SearchBar.css'
 
 const SearchBar = ({ onSearchInputChange }) => {
   return (
     <div className="search-bar">
       <div className="logo-section">
         <div>
-          <img src={instagramLogo} width={50} alt="Instagram" />
+          <img src={instagramLogo} width={25} alt="Instagram" />
         </div>
+        <div className="logo-bar"></div>
         <div>
-          <img src={instagramTextLogo} width={150} alt="Instagram" />
+          <img src={instagramTextLogo} width={100} alt="Instagram" />
         </div>
       </div>
 
@@ -27,9 +29,15 @@ const SearchBar = ({ onSearchInputChange }) => {
       </div>
 
       <div className="user-activity-section">
-        <img src={compass} width={30} alt="Location" />
-        <img src={like} width={30} alt="Like" />
-        <img src={profile} width={30} alt="Profile" />
+        <div>
+          <img src={compass} width={30} alt="Location" />
+        </div>
+        <div>
+          <img src={like} width={30} alt="Like" />
+        </div>
+        <div>
+          <img src={profile} width={30} alt="Profile" />
+        </div>        
       </div>
     </div>
   )

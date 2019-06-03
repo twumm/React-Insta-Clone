@@ -1,0 +1,28 @@
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 20px;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  height: 23px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-bar {
+  background-color: black;
+  height: 30px;
+  margin: 0 16px;
+  width: 1px;
+}
+
+.user-activity-section {
+  display: flex;
+}
+
+.user-activity-section div {
+  padding-left: 20px;
+}
