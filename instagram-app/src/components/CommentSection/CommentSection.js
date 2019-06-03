@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Comment from './Comment';
 
 const CommentSection = ({ postTime, comments }) => {
@@ -34,6 +35,11 @@ const CommentSection = ({ postTime, comments }) => {
       
     </div>
   )
+}
+
+CommentSection.propTypes = {
+  postTime: PropTypes.string,
+  comments: PropTypes.array,
 }
 
 export default CommentSection

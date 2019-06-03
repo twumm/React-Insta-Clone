@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import instagramTextLogo from '../../assets/img/instagram-text-logo.png'
 import instagramLogo from '../../assets/img/instagram.svg'
 import compass from '../../assets/img/compass.svg'
@@ -32,6 +33,10 @@ const SearchBar = ({ onSearchInputChange }) => {
       </div>
     </div>
   )
+}
+
+SearchBar.propTypes = {
+  onSearchInputChange: PropTypes.func
 }
 
 export default SearchBar
