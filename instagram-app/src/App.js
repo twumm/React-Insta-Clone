@@ -8,12 +8,14 @@ import './App.css';
 function App() {
   return (
     <div className="app-container">
-      <SearchBar />
+      <div className="search-bar-container">
+        <SearchBar />
+      </div>
       <div className="main-post-container">
         {
           dummyData
             .map(post => (
-              <PostContainer key={post.timestamp.trim()} post={post} />
+              <PostContainer key={post.timestamp.replace(/\s+/g, '')} post={post} />
             ))
         }
       </div>

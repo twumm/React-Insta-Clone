@@ -6,3 +6,11 @@
   width: 60%;
   margin: 0 auto;
 }
+
+.search-bar-container {
+  display: flex;
+  padding: 26px 20px;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  background-color: white;
+  height: 27px;
+}
