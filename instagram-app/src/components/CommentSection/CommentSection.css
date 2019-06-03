@@ -60,8 +60,13 @@
 .add-comment-section input {
   border: none;
   height: 50px;
+  width: 90%;
 }
 
 .add-comment-section input::placeholder {
   color: #999999;
+}
+
+.add-comment-section input:focus {
+  outline: none;
 }
