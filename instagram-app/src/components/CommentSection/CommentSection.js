@@ -5,14 +5,21 @@ import Comment from './Comment';
 import chat from '../../assets/img/chat.svg'
 import like from '../../assets/img/heart.svg'
 
-const CommentSection = ({ postTime, comments }) => {
+const CommentSection = ({ likes, postTime, comments }) => {
   return (
-    <div>
+    <div className="comment-section-container">
       <div className="comment-reaction">
-        <img src={like} alt="Like" width={30} />
-        <img src={chat} alt="Comment" width={30} />
+        <div>
+          <img src={like} alt="Like" width={25} />
+        </div>
+        <div>
+          <img src={chat} alt="Comment" width={25} />
+        </div>
       </div>
 
+      <div className="post-like">
+        <a href="same">{likes} likes</a>
+      </div>
       {
         comments
           .map((comment, index) => (
@@ -25,11 +32,11 @@ const CommentSection = ({ postTime, comments }) => {
         )
       }
 
-      <div>
-        <p>{moment().startOf('day').fromNow()}</p>
+      <div className="post-time">
+        <a href="#4">{moment(postTime, "MMMM Do YYYY, h:mm:ss a").fromNow()}</a>
       </div>
       
-      <div>
+      <div className="add-comment-section">
         <input
           type="text"
           placeholder="Add a comment..."
