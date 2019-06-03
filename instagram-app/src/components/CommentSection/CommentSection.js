@@ -1,13 +1,14 @@
 import React from 'react'
 import Comment from './Comment';
 
-const CommentSection = ({ comments }) => {
+const CommentSection = ({ postTime, comments }) => {
   return (
     <div>
       <div className="comment-reaction">
         <img alt="Like" />
         <img alt="Comment" />
       </div>
+
       {
         comments
           .map(comment => (
@@ -19,6 +20,17 @@ const CommentSection = ({ comments }) => {
           )
         )
       }
+
+      <div>
+        <p>{postTime}</p>
+      </div>
+      
+      <div>
+        <input
+          type="text"
+          placeholder="Add a comment..."
+        />
+      </div>
       
     </div>
   )
