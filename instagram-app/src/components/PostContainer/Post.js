@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Post = ({ thumbnailUrl, username, postImageUrl }) => {
   return (
@@ -15,6 +16,12 @@ const Post = ({ thumbnailUrl, username, postImageUrl }) => {
       </div>
     </div>
   )
+}
+
+Post.propTypes = {
+  thumbnailUrl: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  postImageUrl: PropTypes.string.isRequired,
 }
 
 export default Post
