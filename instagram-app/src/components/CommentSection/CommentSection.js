@@ -11,9 +11,9 @@ const CommentSection = ({ postTime, comments }) => {
 
       {
         comments
-          .map(comment => (
+          .map((comment, index) => (
             <Comment
-              key={comment.id}
+              key={index}
               username={comment.username}
               text={comment.text}
             />
