@@ -12,7 +12,7 @@ function App() {
       {
         dummyData
           .map(post => (
-            <PostContainer key={post.id} post={post} />
+            <PostContainer key={post.timestamp.trim()} post={post} />
           ))
       }
       
