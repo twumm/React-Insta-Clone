@@ -1,14 +1,21 @@
 .post-container {
-  margin: 0 auto;
+  margin: 60px auto;
   width: 70%;
+  border: 1px solid #e6e6e6;
+  background-color: white;
 }
 
 .post-user-info {
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #efefef;
 }
 
 .post-user-info img {
   border-radius: 50%;
   margin: 0 15px;
+}
+
+.post-image img {
+  width: 100%;
 }

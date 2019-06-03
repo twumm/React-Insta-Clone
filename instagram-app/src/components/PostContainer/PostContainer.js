@@ -15,6 +15,7 @@ const PostContainer = ({ post }) => {
       <CommentSection
         comments={post.comments}
         postTime={post.timestamp}
+        likes={post.likes}
       />
     </div>
   )
