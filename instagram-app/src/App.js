@@ -7,14 +7,16 @@ import './App.css';
 
 function App() {
   return (
-    <div className="">
+    <div className="app-container">
       <SearchBar />
-      {
-        dummyData
-          .map(post => (
-            <PostContainer key={post.timestamp.trim()} post={post} />
-          ))
-      }
+      <div className="main-post-container">
+        {
+          dummyData
+            .map(post => (
+              <PostContainer key={post.timestamp.trim()} post={post} />
+            ))
+        }
+      </div>
       
     </div>
   );

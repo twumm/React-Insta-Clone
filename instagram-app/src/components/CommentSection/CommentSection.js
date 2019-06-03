@@ -2,13 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment';
 import Comment from './Comment';
+import chat from '../../assets/img/chat.svg'
+import like from '../../assets/img/heart.svg'
 
 const CommentSection = ({ postTime, comments }) => {
   return (
     <div>
       <div className="comment-reaction">
-        <img alt="Like" />
-        <img alt="Comment" />
+        <img src={like} alt="Like" width={30} />
+        <img src={chat} alt="Comment" width={30} />
       </div>
 
       {
@@ -24,7 +26,7 @@ const CommentSection = ({ postTime, comments }) => {
       }
 
       <div>
-        <p>{moment(postTime).startOf('day').fromNow()} ago</p>
+        <p>{moment().startOf('day').fromNow()}</p>
       </div>
       
       <div>
