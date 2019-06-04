@@ -22,14 +22,14 @@ class App extends Component {
     })
   }
 
-  addCommentInputChange = (event) => {
+  addCommentInputChangeHandler = (event) => {
     const newComment = event.target.value
     this.setState({
       newComment: newComment
     })
   }
 
-  addNewComment = (event, postIndex) => {
+  addNewCommentHandler = (event, postIndex) => {
     event.preventDefault();
     const newComment = {
       username: "randomUser",
@@ -53,6 +53,21 @@ class App extends Component {
     })
   }
 
+  likePostHandler = (event, postIndex) => {
+
+    const updatedPosts = this.state.posts
+      .map((post, index) => {
+        if (index === postIndex) {
+          post.likes = post.likes + 1
+        }
+        return post
+      })
+
+    this.setState({
+      posts: updatedPosts
+    })
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -69,8 +84,9 @@ class App extends Component {
                   postIndex={index}
                   comments={this.state.comments}
                   newComment={this.state.newComment}
-                  addCommentInputChange={this.addCommentInputChange}
-                  addNewComment={this.addNewComment}
+                  addCommentInputChangeHandler={this.addCommentInputChangeHandler}
+                  addNewCommentHandler={this.addNewCommentHandler}
+                  likePostHandler={this.likePostHandler}
                 />
               ))
           }
