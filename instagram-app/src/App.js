@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      posts: [],
+      posts:  [],
       comments: [],
       newComment: '',
       searchQuery: '',
@@ -33,6 +33,9 @@ class App extends Component {
 
   addNewCommentHandler = (event, postIndex) => {
     event.preventDefault();
+
+    if (!this.state.newComment.trim()) return
+
     const newComment = {
       username: "randomUser",
       text: this.state.newComment,
