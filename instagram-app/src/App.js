@@ -24,12 +24,6 @@ class App extends Component {
     })
   }
 
-  componentDidUpdate() {
-    if (!this.state.searchQuery) {
-      
-    }
-  }
-
   addCommentInputChangeHandler = (event) => {
     const newComment = event.target.value
     this.setState({
@@ -119,7 +113,7 @@ class App extends Component {
               this.state.searchQuery && this.state.searchResults.length === 0
               ?
                 <div>
-                  <h4 className="not-found">No matching results found</h4>
+                  <h4 className="not-found">No results found</h4>
                 </div>
               :
               this.state.posts
