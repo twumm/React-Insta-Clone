@@ -18,10 +18,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      posts: dummyData,
-      comments: dummyData.map(post => post.comments)
-    })
+    this.getItemsFromLocalStorage('posts')
+    this.getItemsFromLocalStorage('comments')
   }
 
   addCommentInputChangeHandler = (event) => {
@@ -56,6 +54,8 @@ class App extends Component {
       comments: updatedComments,
       newComment: ''
     })
+
+    this.setItemsIntoLocalStorage('comments', updatedComments)
   }
 
   likePostHandler = (event, postIndex) => {
@@ -83,6 +83,24 @@ class App extends Component {
     this.setState({
       searchQuery: searchQuery,
       searchResults: results
+    })
+  }
+
+  setItemsIntoLocalStorage = (dataName, data) => {
+    localStorage.setItem(dataName, JSON.stringify(data))
+  }
+
+  getItemsFromLocalStorage = (dataName) => {
+    let results
+
+    if (dataName === 'posts') {
+      results = JSON.parse(localStorage.getItem(dataName)) || dummyData
+    } else if (dataName === 'comments') {
+      results = JSON.parse(localStorage.getItem(dataName)) || dummyData.map(post => post.comments)
+    }
+
+    this.setState({
+      [dataName]: results
     })
   }
 
