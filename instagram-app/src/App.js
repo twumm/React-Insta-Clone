@@ -5,6 +5,8 @@ import PostContainer from './components/PostContainer/PostContainer'
 import dummyData from './dummy-data'
 import './App.css';
 
+const randomUsername = require('username-generator')
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -35,7 +37,7 @@ class App extends Component {
     if (!this.state.newComment.trim()) return
 
     const newComment = {
-      username: "randomUser",
+      username: randomUsername.generateUsername(),
       text: this.state.newComment,
     }
 
