@@ -4,6 +4,7 @@ import moment from 'moment';
 import Comment from './Comment';
 import chat from '../../assets/img/chat.svg'
 import like from '../../assets/img/heart.svg'
+import { formatNumber } from '../../helpers/formatNumber';
 
 const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler }) => {
   const onCommentInputChange = (event) => {
@@ -30,7 +31,7 @@ const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addC
       </div>
 
       <div className="post-like">
-        <a href="same">{likes} likes</a>
+        <a href="same">{formatNumber(likes)} likes</a>
       </div>
       {
         comments
