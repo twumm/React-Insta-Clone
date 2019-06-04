@@ -41,6 +41,9 @@ const CommentSection = ({ likes, postTime, comments }) => {
           type="text"
           placeholder="Add a comment..."
         />
+        <button
+          className="post-button"
+        >Post</button>
       </div>
       
     </div>

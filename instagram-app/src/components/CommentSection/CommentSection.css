@@ -61,7 +61,8 @@
 .add-comment-section {
   border-top: 1px solid #efefef;
   padding: 0 16px;
-  
+  display: flex;
+  justify-content: space-between;
 }
 
 .add-comment-section input {
@@ -76,4 +77,19 @@
 
 .add-comment-section input:focus {
   outline: none;
+}
+
+.post-button {
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: center;
+  color: rgb(146, 146, 241);
+  letter-spacing: .5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.post-button:hover {
+  color: blue;
 }
