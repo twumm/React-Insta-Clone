@@ -1,7 +1,3 @@
-.app-container {
-  /* width: 90%; */
-}
-
 .main-post-container {
   width: 60%;
   margin: 0 auto;
@@ -13,4 +9,10 @@
   border-bottom: 1px solid rgba(0,0,0,.0975);
   background-color: white;
   height: 27px;
+}
+
+@media only screen and (max-width: 500px) {
+  .main-post-container {
+    width: 100%;
+  }
 }

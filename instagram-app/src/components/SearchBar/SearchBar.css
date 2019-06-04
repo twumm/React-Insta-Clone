@@ -43,4 +43,14 @@
 
 .user-activity-section object {
   color: red;
-} 
+}
+
+@media only screen and (max-width: 500px) {
+  .search-bar {
+    width: 100%;
+  }
+
+  .search-section {
+    display: none;
+  }
+}
