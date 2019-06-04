@@ -75,6 +75,27 @@ class App extends Component {
     this.setItemsIntoLocalStorage('posts', updatedPosts)
   }
 
+  deleteCommentHandler = (event, postIndex, commentIndex) => {
+    const commentArrayToDeleteFrom = this.state.comments[postIndex]
+
+    const remainingComments = commentArrayToDeleteFrom
+      .filter((comment, index) => index !== commentIndex)
+
+    const updatedComments = this.state.comments
+      .map((comment, index) => {
+        if (index === postIndex) {
+          comment = remainingComments
+        }
+        return comment
+      })
+    
+    this.setState({
+      comments: updatedComments
+    })
+
+    this.setItemsIntoLocalStorage('comments', updatedComments)
+  }
+
   searchInputChangeHandler = (event) => {
     const searchQuery = event.target.value
     const results = this.state.posts
@@ -130,6 +151,7 @@ class App extends Component {
                     addCommentInputChangeHandler={this.addCommentInputChangeHandler}
                     addNewCommentHandler={this.addNewCommentHandler}
                     likePostHandler={this.likePostHandler}
+                    deleteCommentHandler={this.deleteCommentHandler}
                   />
                 ))
               :
@@ -150,6 +172,7 @@ class App extends Component {
                     addCommentInputChangeHandler={this.addCommentInputChangeHandler}
                     addNewCommentHandler={this.addNewCommentHandler}
                     likePostHandler={this.likePostHandler}
+                    deleteCommentHandler={this.deleteCommentHandler}
                   />
                 ))
           }
