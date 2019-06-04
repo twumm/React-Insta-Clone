@@ -23,7 +23,6 @@ class App extends Component {
   }
 
   addCommentInputChange = (event) => {
-    // console.log('change')
     const newComment = event.target.value
     this.setState({
       newComment: newComment
@@ -31,7 +30,6 @@ class App extends Component {
   }
 
   addNewComment = (event, postIndex) => {
-    // debugger
     event.preventDefault();
     const newComment = {
       username: "randomUser",
