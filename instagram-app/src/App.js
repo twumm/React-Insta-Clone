@@ -11,7 +11,9 @@ class App extends Component {
     this.state = {
       posts: [],
       comments: [],
-      newComment: ''
+      newComment: '',
+      searchQuery: '',
+      searchResults: []
     }
   }
 
@@ -68,11 +70,20 @@ class App extends Component {
     })
   }
 
+  searchInputChangeHandler = (event) => {
+    const searchQuery = event.target.value
+    this.setState({
+      searchQuery: searchQuery
+    })
+  }
+
   render() {
     return (
       <div className="app-container">
         <div className="search-bar-container">
-          <SearchBar />
+          <SearchBar
+            searchInputChangeHandler={this.searchInputChangeHandler}
+          />
         </div>
         <div className="main-post-container">
           {
