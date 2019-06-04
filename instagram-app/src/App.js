@@ -71,6 +71,8 @@ class App extends Component {
     this.setState({
       posts: updatedPosts
     })
+
+    this.setItemsIntoLocalStorage('posts', updatedPosts)
   }
 
   searchInputChangeHandler = (event) => {
