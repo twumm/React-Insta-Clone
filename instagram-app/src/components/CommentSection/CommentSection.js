@@ -5,20 +5,24 @@ import Comment from './Comment';
 import chat from '../../assets/img/chat.svg'
 import like from '../../assets/img/heart.svg'
 
-const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChange, addNewComment }) => {
+const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler }) => {
   const onCommentInputChange = (event) => {
-    addCommentInputChange(event);
+    addCommentInputChangeHandler(event);
   }
 
   const onAddNewComment = (event, postIndex) => {
-    addNewComment(event, postIndex);
+    addNewCommentHandler(event, postIndex);
+  }
+
+  const onLikePost = (event, postIndex) => {
+    likePostHandler(event, postIndex);
   }
   
   return (
     <div className="comment-section-container">
       <div className="comment-reaction">
         <div>
-          <img src={like} alt="Like" width={25} />
+          <img src={like} alt="Like" width={25} onClick={(event) => onLikePost(event, postIndex)} />
         </div>
         <div>
           <img src={chat} alt="Comment" width={25} />
