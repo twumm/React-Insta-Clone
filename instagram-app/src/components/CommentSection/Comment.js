@@ -5,8 +5,14 @@ import './CommentSection.css'
 const Comment = ({ comment }) => {
   return (
     <div className="user-comment">
-      <h6>{comment.username}</h6>
-      <p>{comment.text}</p>
+      {/* <h6>{comment.username}</h6>
+      <p>{comment.text}</p> */}
+      <p className="comment-user">
+        {comment.username}
+        <span className="comment-text">
+          {comment.text}
+        </span>
+      </p>
     </div>
   )
 }
