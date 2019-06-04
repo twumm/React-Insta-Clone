@@ -24,6 +24,12 @@ class App extends Component {
     })
   }
 
+  componentDidUpdate() {
+    if (!this.state.searchQuery) {
+      
+    }
+  }
+
   addCommentInputChangeHandler = (event) => {
     const newComment = event.target.value
     this.setState({
@@ -72,8 +78,14 @@ class App extends Component {
 
   searchInputChangeHandler = (event) => {
     const searchQuery = event.target.value
+    const results = this.state.posts
+      .filter(post => 
+        post.username.toUpperCase().indexOf(searchQuery.toUpperCase()) > -1
+      )
+      
     this.setState({
-      searchQuery: searchQuery
+      searchQuery: searchQuery,
+      searchResults: results
     })
   }
 
@@ -82,24 +94,47 @@ class App extends Component {
       <div className="app-container">
         <div className="search-bar-container">
           <SearchBar
+            searchQuery={this.state.searchQuery}
             searchInputChangeHandler={this.searchInputChangeHandler}
           />
         </div>
         <div className="main-post-container">
           {
-            this.state.posts
-              .map((post, index) => (
-                <PostContainer
-                  key={post.timestamp.replace(/\s+/g, '')}
-                  post={post}
-                  postIndex={index}
-                  comments={this.state.comments}
-                  newComment={this.state.newComment}
-                  addCommentInputChangeHandler={this.addCommentInputChangeHandler}
-                  addNewCommentHandler={this.addNewCommentHandler}
-                  likePostHandler={this.likePostHandler}
-                />
-              ))
+            this.state.searchQuery && this.state.searchResults.length >= 1
+              ? 
+              this.state.searchResults
+                .map((post, index) => (
+                  <PostContainer
+                    key={post.timestamp.replace(/\s+/g, '')}
+                    post={post}
+                    postIndex={index}
+                    comments={this.state.comments}
+                    newComment={this.state.newComment}
+                    addCommentInputChangeHandler={this.addCommentInputChangeHandler}
+                    addNewCommentHandler={this.addNewCommentHandler}
+                    likePostHandler={this.likePostHandler}
+                  />
+                ))
+              :
+              this.state.searchQuery && this.state.searchResults.length === 0
+              ?
+                <div>
+                  <h4 className="not-found">No matching results found</h4>
+                </div>
+              :
+              this.state.posts
+                .map((post, index) => (
+                  <PostContainer
+                    key={post.timestamp.replace(/\s+/g, '')}
+                    post={post}
+                    postIndex={index}
+                    comments={this.state.comments}
+                    newComment={this.state.newComment}
+                    addCommentInputChangeHandler={this.addCommentInputChangeHandler}
+                    addNewCommentHandler={this.addNewCommentHandler}
+                    likePostHandler={this.likePostHandler}
+                  />
+                ))
           }
         </div>
         
