@@ -68,7 +68,8 @@
 .add-comment-section input {
   border: none;
   height: 50px;
-  width: 90%;
+  padding-right: 30px;
+  /* width: 90%; */
 }
 
 .add-comment-section input::placeholder {
@@ -77,6 +78,15 @@
 
 .add-comment-section input:focus {
   outline: none;
+}
+
+.add-comment-form {
+  display: flex;
+  width: 100%;
+}
+
+.post-input {
+  width: 90%;
 }
 
 .post-button {
