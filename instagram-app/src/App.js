@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FuzzySearch from 'fuzzy-search'
 import SearchBar from './components/SearchBar/SearchBar'
 import PostContainer from './components/PostContainer/PostContainer'
 
@@ -100,10 +101,14 @@ class App extends Component {
 
   searchInputChangeHandler = (event) => {
     const searchQuery = event.target.value
-    const results = this.state.posts
-      .filter(post => 
-        post.username.toUpperCase().indexOf(searchQuery.toUpperCase()) > -1
-      )
+    const searcher = new FuzzySearch(this.state.posts, ['username'], {
+      caseSensitive: true,
+    })
+    // const results = this.state.posts
+    //   .filter(post => 
+    //     post.username.toUpperCase().indexOf(searchQuery.toUpperCase()) > -1
+    //   )
+    const results = searcher.search(searchQuery)
       
     this.setState({
       searchQuery: searchQuery,
