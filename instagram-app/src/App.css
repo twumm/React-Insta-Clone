@@ -11,6 +11,15 @@
   height: 27px;
 }
 
+@media only screen and (max-width: 800px) {
+  .main-post-container {
+    width: 95%;
+  }
+  .search-bar-container {
+    justify-content: space-between;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   .main-post-container {
     width: 100%;
