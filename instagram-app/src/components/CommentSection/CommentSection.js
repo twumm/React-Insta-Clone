@@ -6,7 +6,7 @@ import chat from '../../assets/img/chat.svg'
 import like from '../../assets/img/heart.svg'
 import { formatNumber } from '../../helpers/formatNumber';
 
-const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler }) => {
+const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler, deleteCommentHandler }) => {
   const onCommentInputChange = (event) => {
     addCommentInputChangeHandler(event);
   }
@@ -39,6 +39,9 @@ const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addC
             <Comment
               key={index}
               comment={comment}
+              postIndex={postIndex}
+              commentIndex={index}
+              deleteCommentHandler={deleteCommentHandler}
             />
           )
         )
