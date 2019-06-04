@@ -4,7 +4,7 @@ import Post from './Post'
 import CommentSection from '../CommentSection/CommentSection'
 import './PostContainer.css'
 
-const PostContainer = ({ post }) => {
+const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputChange, addNewComment }) => {
   return (
     <div className="post-container">
       <Post
@@ -13,9 +13,13 @@ const PostContainer = ({ post }) => {
         postImageUrl={post.imageUrl}
       />
       <CommentSection
-        comments={post.comments}
+        comments={comments[postIndex]}
+        newComment={newComment}
+        postIndex={postIndex}
         postTime={post.timestamp}
         likes={post.likes}
+        addCommentInputChange={addCommentInputChange}
+        addNewComment={addNewComment}
       />
     </div>
   )
