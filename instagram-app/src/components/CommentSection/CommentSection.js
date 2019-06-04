@@ -5,7 +5,15 @@ import Comment from './Comment';
 import chat from '../../assets/img/chat.svg'
 import like from '../../assets/img/heart.svg'
 
-const CommentSection = ({ likes, postTime, comments }) => {
+const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChange, addNewComment }) => {
+  const onCommentInputChange = (event) => {
+    addCommentInputChange(event);
+  }
+
+  const onAddNewComment = (event, postIndex) => {
+    addNewComment(event, postIndex);
+  }
+  
   return (
     <div className="comment-section-container">
       <div className="comment-reaction">
@@ -25,8 +33,7 @@ const CommentSection = ({ likes, postTime, comments }) => {
           .map((comment, index) => (
             <Comment
               key={index}
-              username={comment.username}
-              text={comment.text}
+              comment={comment}
             />
           )
         )
@@ -37,13 +44,24 @@ const CommentSection = ({ likes, postTime, comments }) => {
       </div>
       
       <div className="add-comment-section">
-        <input
-          type="text"
-          placeholder="Add a comment..."
-        />
-        <button
-          className="post-button"
-        >Post</button>
+        <form
+          className="add-comment-form"
+          onSubmit={(event) => onAddNewComment(event, postIndex)}
+        >
+          <input
+            type="text"
+            placeholder="Add a comment..."
+            className="post-input"
+            value={newComment}
+            onChange={onCommentInputChange}
+          />
+
+          <input
+            type="submit"
+            value="Post"
+            className="post-button"
+          />
+        </form>
       </div>
       
     </div>
