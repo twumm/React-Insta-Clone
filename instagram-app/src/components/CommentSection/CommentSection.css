@@ -10,6 +10,7 @@
 .comment-reaction {
   display: flex;
   padding: 0 16px;
+  margin-top: 10px;
 }
 
 .post-like {
@@ -41,14 +42,20 @@
   margin-right: 5px;
 }
 
+.post-time {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .post-time a {
   font-size: 11px;
   letter-spacing: .2px;
   text-transform: uppercase;
   font-weight: 200;
-  margin: 5px auto 10px auto;
-  cursor: pointer;
   padding: 0 16px;
+  text-decoration: none;
+  color: inherit;
+  vertical-align: top;
 }
 
 .add-comment-section {
