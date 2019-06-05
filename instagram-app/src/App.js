@@ -7,7 +7,7 @@ import withAuthenticate from './authentication/withAuthenticate'
 import dummyData from './dummy-data'
 import './App.css';
 
-const randomUsername = require('username-generator')
+// const randomUsername = require('username-generator')
 const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)
 
 class App extends Component {
@@ -18,13 +18,15 @@ class App extends Component {
       comments: [],
       newComment: '',
       searchQuery: '',
-      searchResults: []
+      searchResults: [],
+      username: ''
     }
   }
 
   componentDidMount() {
     this.getItemsFromLocalStorage('posts')
     this.getItemsFromLocalStorage('comments')
+    this.getItemsFromLocalStorage('username')
   }
 
   addCommentInputChangeHandler = (event) => {
@@ -40,7 +42,7 @@ class App extends Component {
     if (!this.state.newComment.trim()) return
 
     const newComment = {
-      username: randomUsername.generateUsername(),
+      username: this.state.username,
       text: this.state.newComment,
     }
 
@@ -129,6 +131,8 @@ class App extends Component {
       results = JSON.parse(localStorage.getItem(dataName)) || dummyData
     } else if (dataName === 'comments') {
       results = JSON.parse(localStorage.getItem(dataName)) || dummyData.map(post => post.comments)
+    } else if (dataName === 'username') {
+      results = localStorage.getItem(dataName)
     }
 
     this.setState({
