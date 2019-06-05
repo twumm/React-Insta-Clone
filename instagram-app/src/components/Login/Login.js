@@ -17,6 +17,7 @@ const Login = () => {
     localStorage.setItem('username', username)
     setUsername('')
     setPassword('')
+    window.location.reload()
   }
 
   return (
