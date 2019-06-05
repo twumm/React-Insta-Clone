@@ -160,25 +160,22 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        
-        <div className="main-post-container">
-          <ComponentFromWithAuthenticate
-            posts={this.state.posts}
-            comments={this.state.comments}
-            searchQuery={this.state.searchQuery}
-            searchResults={this.state.searchResults}
-            searchInputChangeHandler={this.searchInputChangeHandler}
-            newComment={this.state.newComment}
-            addCommentInputChangeHandler={this.addCommentInputChangeHandler}
-            addNewCommentHandler={this.addNewCommentHandler}
-            likePostHandler={this.likePostHandler}
-            deleteCommentHandler={this.deleteCommentHandler}
-            loginInputChangeHandler={this.loginInputChangeHandler}
-            loginHandler={this.loginHandler}
-            username={this.state.username}
-            password={this.state.password}
-          />
-        </div>
+        <ComponentFromWithAuthenticate
+          posts={this.state.posts}
+          comments={this.state.comments}
+          searchQuery={this.state.searchQuery}
+          searchResults={this.state.searchResults}
+          searchInputChangeHandler={this.searchInputChangeHandler}
+          newComment={this.state.newComment}
+          addCommentInputChangeHandler={this.addCommentInputChangeHandler}
+          addNewCommentHandler={this.addNewCommentHandler}
+          likePostHandler={this.likePostHandler}
+          deleteCommentHandler={this.deleteCommentHandler}
+          loginInputChangeHandler={this.loginInputChangeHandler}
+          loginHandler={this.loginHandler}
+          username={this.state.username}
+          password={this.state.password}
+        />
       </div>
     );
   }

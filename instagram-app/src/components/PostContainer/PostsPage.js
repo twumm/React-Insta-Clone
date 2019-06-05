@@ -25,7 +25,9 @@ const PostsPage = ({
       {
         searchQuery && searchResults.length >= 1
         ?
+        <div className="main-post-container">{
         searchResults.map((post, index) => (
+          
           <PostContainer
             key={post.timestamp.replace(/\s+/g, '')}
             post={post}
@@ -38,6 +40,7 @@ const PostsPage = ({
             deleteCommentHandler={deleteCommentHandler}
           />
         ))
+        }</div>
         :
         searchQuery && searchResults.length === 0
         ?
@@ -45,6 +48,7 @@ const PostsPage = ({
             <h4 className="not-found">No results found</h4>
           </div>
         :
+        <div className="main-post-container">{
         posts.map((post, index) => (
           <PostContainer
             key={post.timestamp.replace(/\s+/g, '')}
@@ -58,6 +62,7 @@ const PostsPage = ({
             deleteCommentHandler={deleteCommentHandler}
           />
         ))
+      }</div>
       }
       
     </div>
