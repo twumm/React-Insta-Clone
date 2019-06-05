@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FuzzySearch from 'fuzzy-search'
-import SearchBar from './components/SearchBar/SearchBar'
+import LoginPage from './components/Login/LoginPage'
 import PostsPage from './components/PostContainer/PostsPage'
 import withAuthenticate from './authentication/withAuthenticate'
 
@@ -8,7 +8,6 @@ import dummyData from './dummy-data'
 import './App.css';
 
 // const randomUsername = require('username-generator')
-const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +18,8 @@ class App extends Component {
       newComment: '',
       searchQuery: '',
       searchResults: [],
-      username: ''
+      username: '',
+      password: ''
     }
   }
 
@@ -42,7 +42,7 @@ class App extends Component {
     if (!this.state.newComment.trim()) return
 
     const newComment = {
-      username: this.state.username,
+      username: localStorage.getItem('username'),
       text: this.state.newComment,
     }
 
@@ -132,11 +132,28 @@ class App extends Component {
     } else if (dataName === 'comments') {
       results = JSON.parse(localStorage.getItem(dataName)) || dummyData.map(post => post.comments)
     } else if (dataName === 'username') {
-      results = localStorage.getItem(dataName)
+      results = localStorage.getItem(dataName) || ''
     }
 
     this.setState({
       [dataName]: results
+    })
+  }
+
+  loginInputChangeHandler = event => {
+    const inputName = event.target.name
+    const inputValue = event.target.value
+    if (!inputName || !inputName.trim()) return
+    this.setState({
+      [inputName]: inputValue,
+    })
+  }
+
+  loginHandler = event => {
+    event.preventDefault()
+    localStorage.setItem('username', this.state.username)
+    this.setState({
+      username: ''
     })
   }
 
@@ -156,11 +173,15 @@ class App extends Component {
             addNewCommentHandler={this.addNewCommentHandler}
             likePostHandler={this.likePostHandler}
             deleteCommentHandler={this.deleteCommentHandler}
+            loginInputChangeHandler={this.loginInputChangeHandler}
+            loginHandler={this.loginHandler}
+            username={this.state.username}
+            password={this.state.password}
           />
         </div>
       </div>
     );
   }
 }
-
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(LoginPage)
 export default App;

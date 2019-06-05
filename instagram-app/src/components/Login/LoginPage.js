@@ -1,10 +1,15 @@
 import React from 'react'
 import Login from './Login'
 
-const LoginPage = () => {
+const LoginPage = ({ username, password, loginInputChangeHandler, loginHandler }) => {
   return (
     <div>
-      <Login />
+      <Login
+        username={username}
+        password={password}
+        loginInputChangeHandler={loginInputChangeHandler}
+        loginHandler={loginHandler}
+      />
     </div>
   )
 }
