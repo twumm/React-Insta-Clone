@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FuzzySearch from 'fuzzy-search'
 import SearchBar from './components/SearchBar/SearchBar'
-import PostContainer from './components/PostContainer/PostContainer'
+import PostsPage from './components/PostContainer/PostsPage'
 
 import dummyData from './dummy-data'
 import './App.css';
@@ -144,47 +144,18 @@ class App extends Component {
           />
         </div>
         <div className="main-post-container">
-          {
-            this.state.searchQuery && this.state.searchResults.length >= 1
-              ? 
-              this.state.searchResults
-                .map((post, index) => (
-                  <PostContainer
-                    key={post.timestamp.replace(/\s+/g, '')}
-                    post={post}
-                    postIndex={index}
-                    comments={this.state.comments}
-                    newComment={this.state.newComment}
-                    addCommentInputChangeHandler={this.addCommentInputChangeHandler}
-                    addNewCommentHandler={this.addNewCommentHandler}
-                    likePostHandler={this.likePostHandler}
-                    deleteCommentHandler={this.deleteCommentHandler}
-                  />
-                ))
-              :
-              this.state.searchQuery && this.state.searchResults.length === 0
-              ?
-                <div>
-                  <h4 className="not-found">No results found</h4>
-                </div>
-              :
-              this.state.posts
-                .map((post, index) => (
-                  <PostContainer
-                    key={post.timestamp.replace(/\s+/g, '')}
-                    post={post}
-                    postIndex={index}
-                    comments={this.state.comments}
-                    newComment={this.state.newComment}
-                    addCommentInputChangeHandler={this.addCommentInputChangeHandler}
-                    addNewCommentHandler={this.addNewCommentHandler}
-                    likePostHandler={this.likePostHandler}
-                    deleteCommentHandler={this.deleteCommentHandler}
-                  />
-                ))
-          }
+          <PostsPage
+            posts={this.state.posts}
+            comments={this.state.comments}
+            searchQuery={this.state.searchQuery}
+            searchResults={this.state.searchResults}
+            newComment={this.state.newComment}
+            addCommentInputChangeHandler={this.addCommentInputChangeHandler}
+            addNewCommentHandler={this.addNewCommentHandler}
+            likePostHandler={this.likePostHandler}
+            deleteCommentHandler={this.deleteCommentHandler}
+          />
         </div>
-        
       </div>
     );
   }
