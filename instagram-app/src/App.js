@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import FuzzySearch from 'fuzzy-search'
 import SearchBar from './components/SearchBar/SearchBar'
 import PostsPage from './components/PostContainer/PostsPage'
+import withAuthenticate from './authentication/withAuthenticate'
 
 import dummyData from './dummy-data'
 import './App.css';
 
 const randomUsername = require('username-generator')
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)
 
 class App extends Component {
   constructor(props) {
@@ -144,7 +146,7 @@ class App extends Component {
           />
         </div>
         <div className="main-post-container">
-          <PostsPage
+          <ComponentFromWithAuthenticate
             posts={this.state.posts}
             comments={this.state.comments}
             searchQuery={this.state.searchQuery}
