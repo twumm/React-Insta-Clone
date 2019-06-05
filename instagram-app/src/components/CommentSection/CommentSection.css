@@ -10,6 +10,7 @@
 .comment-reaction {
   display: flex;
   padding: 0 16px;
+  margin-top: 10px;
 }
 
 .post-like {
@@ -26,19 +27,34 @@
 
 .user-comment {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   padding: 0 16px;
+  justify-content: space-between;
 }
 
-.user-comment h6,
-.user-comment p {
+.user-comment .comment-user {
   font-size: 14px;
   margin-top: 2px;
   margin-bottom: 2px;
+  font-weight: bold;
 }
 
-.user-comment h6 {
-  margin-right: 5px;
+.user-comment .comment-text {
+  font-weight: 400;
+  padding-left: 5px;
+}
+
+.user-comment .comment-delete {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  color: rgb(207, 110, 110);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.post-time {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .post-time a {
@@ -46,21 +62,24 @@
   letter-spacing: .2px;
   text-transform: uppercase;
   font-weight: 200;
-  margin: 5px auto 10px auto;
-  cursor: pointer;
   padding: 0 16px;
+  text-decoration: none;
+  color: inherit;
+  vertical-align: top;
 }
 
 .add-comment-section {
   border-top: 1px solid #efefef;
   padding: 0 16px;
-  
+  display: flex;
+  justify-content: space-between;
 }
 
 .add-comment-section input {
   border: none;
   height: 50px;
-  width: 90%;
+  padding-right: 30px;
+  /* width: 90%; */
 }
 
 .add-comment-section input::placeholder {
@@ -69,4 +88,28 @@
 
 .add-comment-section input:focus {
   outline: none;
+}
+
+.add-comment-form {
+  display: flex;
+  width: 100%;
+}
+
+.post-input {
+  width: 90%;
+}
+
+.post-button {
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: center;
+  color: rgb(146, 146, 241);
+  letter-spacing: .5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.post-button:hover {
+  color: blue;
 }

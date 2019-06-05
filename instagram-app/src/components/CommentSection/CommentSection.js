@@ -4,13 +4,26 @@ import moment from 'moment';
 import Comment from './Comment';
 import chat from '../../assets/img/chat.svg'
 import like from '../../assets/img/heart.svg'
+import { formatNumber } from '../../helpers/formatNumber';
 
-const CommentSection = ({ likes, postTime, comments }) => {
+const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler, deleteCommentHandler }) => {
+  const onCommentInputChange = (event) => {
+    addCommentInputChangeHandler(event);
+  }
+
+  const onAddNewComment = (event, postIndex) => {
+    addNewCommentHandler(event, postIndex);
+  }
+
+  const onLikePost = (event, postIndex) => {
+    likePostHandler(event, postIndex);
+  }
+  
   return (
     <div className="comment-section-container">
       <div className="comment-reaction">
         <div>
-          <img src={like} alt="Like" width={25} />
+          <img src={like} alt="Like" width={25} onClick={(event) => onLikePost(event, postIndex)} />
         </div>
         <div>
           <img src={chat} alt="Comment" width={25} />
@@ -18,15 +31,17 @@ const CommentSection = ({ likes, postTime, comments }) => {
       </div>
 
       <div className="post-like">
-        <a href="same">{likes} likes</a>
+        <a href="same">{formatNumber(likes)} likes</a>
       </div>
       {
         comments
           .map((comment, index) => (
             <Comment
               key={index}
-              username={comment.username}
-              text={comment.text}
+              comment={comment}
+              postIndex={postIndex}
+              commentIndex={index}
+              deleteCommentHandler={deleteCommentHandler}
             />
           )
         )
@@ -37,10 +52,24 @@ const CommentSection = ({ likes, postTime, comments }) => {
       </div>
       
       <div className="add-comment-section">
-        <input
-          type="text"
-          placeholder="Add a comment..."
-        />
+        <form
+          className="add-comment-form"
+          onSubmit={(event) => onAddNewComment(event, postIndex)}
+        >
+          <input
+            type="text"
+            placeholder="Add a comment..."
+            className="post-input"
+            value={newComment}
+            onChange={onCommentInputChange}
+          />
+
+          <input
+            type="submit"
+            value="Post"
+            className="post-button"
+          />
+        </form>
       </div>
       
     </div>

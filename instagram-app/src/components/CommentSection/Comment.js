@@ -2,11 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './CommentSection.css'
 
-const Comment = ({ username, text }) => {
+const Comment = ({ comment, commentIndex, postIndex, deleteCommentHandler }) => {
+  const onDeleteComment = (event, postIndex, commentIndex) => {
+    deleteCommentHandler(event, postIndex, commentIndex)
+  }
+
   return (
     <div className="user-comment">
-      <h6>{username}</h6>
-      <p>{text}</p>
+      <p className="comment-user">
+        {comment.username}
+        <span className="comment-text">
+          {comment.text}
+        </span>
+      </p>
+      <p
+        className="comment-delete"
+        onClick={(event) => onDeleteComment(event, postIndex, commentIndex)}
+      >
+        x
+      </p>
     </div>
   )
 }

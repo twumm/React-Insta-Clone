@@ -7,7 +7,7 @@ import like from '../../assets/img/heart.svg'
 import profile from '../../assets/img/profile.svg'
 import './SearchBar.css'
 
-const SearchBar = ({ onSearchInputChange }) => {
+const SearchBar = ({ searchQuery, searchInputChangeHandler }) => {
   return (
     <div className="search-bar">
       <div className="logo-section">
@@ -24,7 +24,8 @@ const SearchBar = ({ onSearchInputChange }) => {
         <input
           type="text"
           placeholder="Search"
-          onChange={onSearchInputChange}
+          value={searchQuery}
+          onChange={searchInputChangeHandler}
         />
       </div>
 
