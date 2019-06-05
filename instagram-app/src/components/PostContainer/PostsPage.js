@@ -1,11 +1,13 @@
 import React from 'react'
 import PostContainer from './PostContainer'
+import SearchBar from '../SearchBar/SearchBar'
 
 const PostsPage = ({
   posts,
   comments,
   searchQuery,
   searchResults,
+  searchInputChangeHandler,
   newComment,
   addCommentInputChangeHandler,
   addNewCommentHandler,
@@ -14,6 +16,12 @@ const PostsPage = ({
 }) => {
   return (
     <div>
+      <div className="search-bar-container">
+        <SearchBar
+          searchQuery={searchQuery}
+          searchInputChangeHandler={searchInputChangeHandler}
+        />
+        </div>
       {
         searchQuery && searchResults.length >= 1
         ?

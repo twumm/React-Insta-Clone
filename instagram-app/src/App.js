@@ -143,18 +143,14 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <div className="search-bar-container">
-          <SearchBar
-            searchQuery={this.state.searchQuery}
-            searchInputChangeHandler={this.searchInputChangeHandler}
-          />
-        </div>
+        
         <div className="main-post-container">
           <ComponentFromWithAuthenticate
             posts={this.state.posts}
             comments={this.state.comments}
             searchQuery={this.state.searchQuery}
             searchResults={this.state.searchResults}
+            searchInputChangeHandler={this.searchInputChangeHandler}
             newComment={this.state.newComment}
             addCommentInputChangeHandler={this.addCommentInputChangeHandler}
             addNewCommentHandler={this.addNewCommentHandler}
