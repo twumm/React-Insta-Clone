@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import PostContainer from './PostContainer'
 import SearchBar from '../SearchBar/SearchBar'
 
+const PostsPageDiv = styled.div`
+  margin-top: 100px;
+`;
+
 const MainPostContainer = styled.div`
   width: 60%;
   margin: 0 auto;
@@ -22,6 +26,9 @@ const SearchBarHeader = styled.header`
   border-bottom: 1px solid rgba(0,0,0,.0975);
   background-color: white;
   height: 27px;
+  position: fixed;
+  top: 0;
+  width: -webkit-fill-available;
 
   @media (max-width: 800px) {
     justify-content: space-between;
@@ -42,7 +49,7 @@ const PostsPage = ({
   postLiked
 }) => {
   return (
-    <div>
+    <PostsPageDiv>
       <SearchBarHeader>
         <SearchBar
           searchQuery={searchQuery}
@@ -95,7 +102,7 @@ const PostsPage = ({
           }
         </MainPostContainer>
       }
-    </div>
+    </PostsPageDiv>
   )
 }
 
