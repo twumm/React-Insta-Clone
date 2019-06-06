@@ -5,9 +5,6 @@ import PostsPage from './components/PostContainer/PostsPage'
 import withAuthenticate from './authentication/withAuthenticate'
 
 import dummyData from './dummy-data'
-import './App.css';
-
-// const randomUsername = require('username-generator')
 
 class App extends Component {
   constructor(props) {

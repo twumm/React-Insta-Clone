@@ -1,12 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Post from './Post'
 import CommentSection from '../CommentSection/CommentSection'
-import './PostContainer.css'
+
+const PostContainerDiv = styled.div`
+  margin: 60px auto;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+`;
 
 const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler, deleteCommentHandler }) => {
   return (
-    <div className="post-container">
+    <PostContainerDiv>
       <Post
         thumbnailUrl={post.thumbnailUrl}
         username={post.username}
@@ -23,7 +29,7 @@ const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputC
         likePostHandler={likePostHandler}
         deleteCommentHandler={deleteCommentHandler}
       />
-    </div>
+    </PostContainerDiv>
   )
 }
 
