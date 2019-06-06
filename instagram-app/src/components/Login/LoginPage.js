@@ -7,6 +7,10 @@ const MainLoginPageDiv = styled.div`
   padding-bottom: 40px;
   width: 80%;
   margin: 0 auto;
+
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `;
 
 const LoginPage = ({ username, password,

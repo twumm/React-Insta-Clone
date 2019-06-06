@@ -11,6 +11,10 @@ const LoginComponentDiv = styled.div`
   margin: 0 auto;
   margin-top: 10%;
   background-color: white;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const LoginInstaLogoDiv = styled.div`
@@ -22,9 +26,6 @@ const LoginForm = styled.form`
   flex-direction: column;
   margin: 0 auto;
   margin-bottom: 40px;
-  /* input {
-    margin
-  } */
 `;
 
 const LoginInput = styled.input`
