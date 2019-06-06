@@ -33,7 +33,7 @@ const LoginInput = styled.input`
   background-color: #FAFAFA;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
-  height: 25px;
+  height: 35px;
   margin-bottom: 5px;
   padding-left: 8px;
 
@@ -55,8 +55,10 @@ const LoginSubmitInput = styled.input`
 `;
 
 const DisclamerParagraph = styled.p`
-  font-size: 10px;
+  font-size: 11px;
   padding: 20px;
+  text-align: center;
+  margin: 0 30px;
 `;
 
 const Login = ({ username, password,
@@ -91,7 +93,7 @@ const Login = ({ username, password,
         />
       </LoginForm>
       <DisclamerParagraph>
-        (This is a project made with React. No real data is used)
+        **This is a project made with React. No real data is used. Enter random username and password**
       </DisclamerParagraph>
     </LoginComponentDiv>
   )
