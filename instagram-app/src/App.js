@@ -106,7 +106,7 @@ class App extends Component {
   searchInputChangeHandler = (event) => {
     const searchQuery = event.target.value
     const searcher = new FuzzySearch(this.state.posts, ['username'], {
-      caseSensitive: true,
+      caseSensitive: false,
     })
     // const results = this.state.posts
     //   .filter(post => 
