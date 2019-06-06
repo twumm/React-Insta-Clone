@@ -27,6 +27,7 @@ const CommentDeleteParagraph = styled.p`
   color: rgb(207, 110, 110);
   font-weight: bold;
   cursor: pointer;
+  padding: 0 2px;
 `;
 
 const Comment = ({ comment, commentIndex, postIndex, deleteCommentHandler }) => {
