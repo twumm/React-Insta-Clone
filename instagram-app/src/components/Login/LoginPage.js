@@ -1,16 +1,24 @@
 import React from 'react'
+import styled from 'styled-components'
 import Login from './Login'
+
+const MainLoginPageDiv = styled.div`
+  min-height: 100%;
+  padding-bottom: 40px;
+  width: 80%;
+  margin: 0 auto;
+`;
 
 const LoginPage = ({ username, password, loginInputChangeHandler, loginHandler }) => {
   return (
-    <div>
+    <MainLoginPageDiv>
       <Login
         username={username}
         password={password}
         loginInputChangeHandler={loginInputChangeHandler}
         loginHandler={loginHandler}
       />
-    </div>
+    </MainLoginPageDiv>
   )
 }
 
