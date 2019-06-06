@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Route } from 'react-router-dom'
 import Post from './Post'
 import CommentSection from '../CommentSection/CommentSection'
 
@@ -17,6 +18,7 @@ const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputC
         thumbnailUrl={post.thumbnailUrl}
         username={post.username}
         postImageUrl={post.imageUrl}
+        postIndex={postIndex}
       />
       <CommentSection
         comments={comments[postIndex]}
@@ -29,6 +31,7 @@ const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputC
         likePostHandler={likePostHandler}
         deleteCommentHandler={deleteCommentHandler}
       />
+      <Route path="/single-post/:postIndex" component={Post} />
     </PostContainerDiv>
   )
 }

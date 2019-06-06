@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const PostUserInfo = styled.div`
   display: flex;
@@ -24,7 +25,15 @@ const PostImage = styled.div`
   }
 `;
 
-const Post = ({ thumbnailUrl, username, postImageUrl }) => {
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`;
+
+const Post = ({ thumbnailUrl, username, postImageUrl, postIndex }) => {
   return (
     <div>
       <PostUserInfo>
@@ -39,9 +48,11 @@ const Post = ({ thumbnailUrl, username, postImageUrl }) => {
         <Username>{username}</Username>
       </PostUserInfo>
 
-      <PostImage>
-        <img src={postImageUrl} alt="Post" />
-      </PostImage>
+      <StyledLink to={`/single-post/${postIndex}`}>
+        <PostImage>
+          <img src={postImageUrl} alt="Post" />
+        </PostImage>
+      </StyledLink>
     </div>
   )
 }

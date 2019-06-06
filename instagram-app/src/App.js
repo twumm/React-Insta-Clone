@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FuzzySearch from 'fuzzy-search'
+import { BrowserRouter as Router } from 'react-router-dom'
 import LoginPage from './components/Login/LoginPage'
 import PostsPage from './components/PostContainer/PostsPage'
 import withAuthenticate from './authentication/withAuthenticate'
@@ -156,7 +157,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-container">
+      <Router>
         <ComponentFromWithAuthenticate
           posts={this.state.posts}
           comments={this.state.comments}
@@ -173,7 +174,7 @@ class App extends Component {
           username={this.state.username}
           password={this.state.password}
         />
-      </div>
+      </Router>
     );
   }
 }

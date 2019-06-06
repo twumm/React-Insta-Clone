@@ -74,23 +74,24 @@ const PostsPage = ({
             <h4 className="not-found">No results found</h4>
           </div>
         :
-        <MainPostContainer>{
-        posts.map((post, index) => (
-          <PostContainer
-            key={post.timestamp.replace(/\s+/g, '')}
-            post={post}
-            postIndex={index}
-            comments={comments}
-            newComment={newComment}
-            addCommentInputChangeHandler={addCommentInputChangeHandler}
-            addNewCommentHandler={addNewCommentHandler}
-            likePostHandler={likePostHandler}
-            deleteCommentHandler={deleteCommentHandler}
-          />
-        ))
-      }</MainPostContainer>
+        <MainPostContainer>
+          {
+            posts.map((post, index) => (
+              <PostContainer
+                key={post.timestamp.replace(/\s+/g, '')}
+                post={post}
+                postIndex={index}
+                comments={comments}
+                newComment={newComment}
+                addCommentInputChangeHandler={addCommentInputChangeHandler}
+                addNewCommentHandler={addNewCommentHandler}
+                likePostHandler={likePostHandler}
+                deleteCommentHandler={deleteCommentHandler}
+              />
+            ))
+          }
+        </MainPostContainer>
       }
-      
     </div>
   )
 }
