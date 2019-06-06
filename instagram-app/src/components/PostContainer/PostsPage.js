@@ -7,7 +7,7 @@ const MainPostContainer = styled.div`
   width: 60%;
   margin: 0 auto;
 
-  @media (max-width: 500px) {
+  @media (max-width: 800px) {
     width: 95%;
   }
 
@@ -39,6 +39,7 @@ const PostsPage = ({
   addNewCommentHandler,
   likePostHandler,
   deleteCommentHandler,
+  postLiked
 }) => {
   return (
     <div>
@@ -64,6 +65,7 @@ const PostsPage = ({
             addNewCommentHandler={addNewCommentHandler}
             likePostHandler={likePostHandler}
             deleteCommentHandler={deleteCommentHandler}
+            postLiked={postLiked}
           />
         ))
         }</MainPostContainer>
@@ -87,6 +89,7 @@ const PostsPage = ({
                 addNewCommentHandler={addNewCommentHandler}
                 likePostHandler={likePostHandler}
                 deleteCommentHandler={deleteCommentHandler}
+                postLiked={postLiked}
               />
             ))
           }

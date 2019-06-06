@@ -17,7 +17,8 @@ class App extends Component {
       searchQuery: '',
       searchResults: [],
       username: '',
-      password: ''
+      password: '',
+      postLiked: false
     }
   }
 
@@ -68,13 +69,18 @@ class App extends Component {
     const updatedPosts = this.state.posts
       .map((post, index) => {
         if (index === postIndex) {
-          post.likes = post.likes + 1
+          !this.state.postLiked
+          ?
+            post.likes = post.likes + 1
+          :
+            post.likes = post.likes - 1
         }
         return post
       })
 
     this.setState({
-      posts: updatedPosts
+      posts: updatedPosts,
+      postLiked: !this.state.postLiked
     })
 
     this.setItemsIntoLocalStorage('posts', updatedPosts)
@@ -173,6 +179,7 @@ class App extends Component {
           loginHandler={this.loginHandler}
           username={this.state.username}
           password={this.state.password}
+          postLiked={this.state.postLiked}
         />
       </Router>
     );

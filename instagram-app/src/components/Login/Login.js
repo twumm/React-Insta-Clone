@@ -58,7 +58,9 @@ const DisclamerParagraph = styled.p`
   padding: 20px;
 `;
 
-const Login = ({ username, password, loginInputChangeHandler, loginHandler }) => {
+const Login = ({ username, password,
+  loginInputChangeHandler, loginHandler }) => {
+
   return (
     <LoginComponentDiv>
       <LoginInstaLogoDiv>

@@ -11,7 +11,9 @@ const PostContainerDiv = styled.div`
   background-color: white;
 `;
 
-const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler, deleteCommentHandler }) => {
+const PostContainer = ({ 
+  post, comments, newComment, postIndex, addCommentInputChangeHandler,
+  addNewCommentHandler, likePostHandler, deleteCommentHandler, postLiked }) => {
   return (
     <PostContainerDiv>
       <Post
@@ -30,6 +32,7 @@ const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputC
         addNewCommentHandler={addNewCommentHandler}
         likePostHandler={likePostHandler}
         deleteCommentHandler={deleteCommentHandler}
+        postLiked={postLiked}
       />
       <Route path="/single-post/:postIndex" component={Post} />
     </PostContainerDiv>

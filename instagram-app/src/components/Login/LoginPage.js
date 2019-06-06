@@ -9,7 +9,9 @@ const MainLoginPageDiv = styled.div`
   margin: 0 auto;
 `;
 
-const LoginPage = ({ username, password, loginInputChangeHandler, loginHandler }) => {
+const LoginPage = ({ username, password,
+  loginInputChangeHandler, loginHandler }) => {
+    
   return (
     <MainLoginPageDiv>
       <Login

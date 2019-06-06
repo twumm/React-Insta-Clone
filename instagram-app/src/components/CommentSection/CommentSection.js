@@ -4,7 +4,8 @@ import moment from 'moment';
 import styled from 'styled-components'
 import Comment from './Comment';
 import chat from '../../assets/img/chat.svg'
-import like from '../../assets/img/heart.svg'
+import likeHeart from '../../assets/img/likedHeart.svg'
+import unlikedHeart from '../../assets/img/unlikedHeart.svg'
 import { formatNumber } from '../../helpers/formatNumber';
 
 const CommentSectionDiv = styled.div``;
@@ -93,7 +94,10 @@ const AddCommentForm = styled.form`
   width: 100%;
 `;
 
-const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler, deleteCommentHandler }) => {
+const CommentSection = ({ likes, postTime, comments, newComment,
+  postIndex, addCommentInputChangeHandler, addNewCommentHandler, 
+  likePostHandler, deleteCommentHandler, postLiked }) => {
+
   const onCommentInputChange = (event) => {
     addCommentInputChangeHandler(event);
   }
@@ -110,10 +114,19 @@ const CommentSection = ({ likes, postTime, comments, newComment, postIndex, addC
     <CommentSectionDiv>
       <CommentReactionDiv>
         <div>
-          <img src={like} alt="Like" width={25} onClick={(event) => onLikePost(event, postIndex)} />
+          <img
+            src={postLiked ? likeHeart : unlikedHeart}
+            alt="Like"
+            width={25}
+            onClick={(event) => onLikePost(event, postIndex)}
+          />
         </div>
         <div>
-          <img src={chat} alt="Comment" width={25} />
+          <img
+            src={chat}
+            alt="Comment"
+            width={25}
+          />
         </div>
       </CommentReactionDiv>
 
