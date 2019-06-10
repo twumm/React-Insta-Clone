@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import FuzzySearch from 'fuzzy-search'
-import SearchBar from './components/SearchBar/SearchBar'
-import PostContainer from './components/PostContainer/PostContainer'
+import LoginPage from './components/Login/LoginPage'
+import PostsPage from './components/PostContainer/PostsPage'
+import withAuthenticate from './authentication/withAuthenticate'
 
 import dummyData from './dummy-data'
 import './App.css';
 
-const randomUsername = require('username-generator')
+// const randomUsername = require('username-generator')
 
 class App extends Component {
   constructor(props) {
@@ -16,13 +17,16 @@ class App extends Component {
       comments: [],
       newComment: '',
       searchQuery: '',
-      searchResults: []
+      searchResults: [],
+      username: '',
+      password: ''
     }
   }
 
   componentDidMount() {
     this.getItemsFromLocalStorage('posts')
     this.getItemsFromLocalStorage('comments')
+    this.getItemsFromLocalStorage('username')
   }
 
   addCommentInputChangeHandler = (event) => {
@@ -38,7 +42,7 @@ class App extends Component {
     if (!this.state.newComment.trim()) return
 
     const newComment = {
-      username: randomUsername.generateUsername(),
+      username: localStorage.getItem('username'),
       text: this.state.newComment,
     }
 
@@ -127,6 +131,8 @@ class App extends Component {
       results = JSON.parse(localStorage.getItem(dataName)) || dummyData
     } else if (dataName === 'comments') {
       results = JSON.parse(localStorage.getItem(dataName)) || dummyData.map(post => post.comments)
+    } else if (dataName === 'username') {
+      results = localStorage.getItem(dataName) || ''
     }
 
     this.setState({
@@ -134,60 +140,45 @@ class App extends Component {
     })
   }
 
+  loginInputChangeHandler = event => {
+    const inputName = event.target.name
+    const inputValue = event.target.value
+    if (!inputName || !inputName.trim()) return
+    this.setState({
+      [inputName]: inputValue,
+    })
+  }
+
+  loginHandler = event => {
+    event.preventDefault()
+    localStorage.setItem('username', this.state.username)
+    this.setState({
+      username: ''
+    })
+  }
+
   render() {
     return (
       <div className="app-container">
-        <div className="search-bar-container">
-          <SearchBar
-            searchQuery={this.state.searchQuery}
-            searchInputChangeHandler={this.searchInputChangeHandler}
-          />
-        </div>
-        <div className="main-post-container">
-          {
-            this.state.searchQuery && this.state.searchResults.length >= 1
-              ? 
-              this.state.searchResults
-                .map((post, index) => (
-                  <PostContainer
-                    key={post.timestamp.replace(/\s+/g, '')}
-                    post={post}
-                    postIndex={index}
-                    comments={this.state.comments}
-                    newComment={this.state.newComment}
-                    addCommentInputChangeHandler={this.addCommentInputChangeHandler}
-                    addNewCommentHandler={this.addNewCommentHandler}
-                    likePostHandler={this.likePostHandler}
-                    deleteCommentHandler={this.deleteCommentHandler}
-                  />
-                ))
-              :
-              this.state.searchQuery && this.state.searchResults.length === 0
-              ?
-                <div>
-                  <h4 className="not-found">No results found</h4>
-                </div>
-              :
-              this.state.posts
-                .map((post, index) => (
-                  <PostContainer
-                    key={post.timestamp.replace(/\s+/g, '')}
-                    post={post}
-                    postIndex={index}
-                    comments={this.state.comments}
-                    newComment={this.state.newComment}
-                    addCommentInputChangeHandler={this.addCommentInputChangeHandler}
-                    addNewCommentHandler={this.addNewCommentHandler}
-                    likePostHandler={this.likePostHandler}
-                    deleteCommentHandler={this.deleteCommentHandler}
-                  />
-                ))
-          }
-        </div>
-        
+        <ComponentFromWithAuthenticate
+          posts={this.state.posts}
+          comments={this.state.comments}
+          searchQuery={this.state.searchQuery}
+          searchResults={this.state.searchResults}
+          searchInputChangeHandler={this.searchInputChangeHandler}
+          newComment={this.state.newComment}
+          addCommentInputChangeHandler={this.addCommentInputChangeHandler}
+          addNewCommentHandler={this.addNewCommentHandler}
+          likePostHandler={this.likePostHandler}
+          deleteCommentHandler={this.deleteCommentHandler}
+          loginInputChangeHandler={this.loginInputChangeHandler}
+          loginHandler={this.loginHandler}
+          username={this.state.username}
+          password={this.state.password}
+        />
       </div>
     );
   }
 }
-
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(LoginPage)
 export default App;
