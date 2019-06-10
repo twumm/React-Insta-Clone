@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import FuzzySearch from 'fuzzy-search'
+import { BrowserRouter as Router } from 'react-router-dom'
 import LoginPage from './components/Login/LoginPage'
 import PostsPage from './components/PostContainer/PostsPage'
 import withAuthenticate from './authentication/withAuthenticate'
 
 import dummyData from './dummy-data'
-import './App.css';
-
-// const randomUsername = require('username-generator')
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +17,8 @@ class App extends Component {
       searchQuery: '',
       searchResults: [],
       username: '',
-      password: ''
+      password: '',
+      postLiked: false
     }
   }
 
@@ -70,13 +69,18 @@ class App extends Component {
     const updatedPosts = this.state.posts
       .map((post, index) => {
         if (index === postIndex) {
-          post.likes = post.likes + 1
+          !this.state.postLiked
+          ?
+            post.likes = post.likes + 1
+          :
+            post.likes = post.likes - 1
         }
         return post
       })
 
     this.setState({
-      posts: updatedPosts
+      posts: updatedPosts,
+      postLiked: !this.state.postLiked
     })
 
     this.setItemsIntoLocalStorage('posts', updatedPosts)
@@ -106,7 +110,7 @@ class App extends Component {
   searchInputChangeHandler = (event) => {
     const searchQuery = event.target.value
     const searcher = new FuzzySearch(this.state.posts, ['username'], {
-      caseSensitive: true,
+      caseSensitive: false,
     })
     // const results = this.state.posts
     //   .filter(post => 
@@ -159,7 +163,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-container">
+      <Router>
         <ComponentFromWithAuthenticate
           posts={this.state.posts}
           comments={this.state.comments}
@@ -175,8 +179,9 @@ class App extends Component {
           loginHandler={this.loginHandler}
           username={this.state.username}
           password={this.state.password}
+          postLiked={this.state.postLiked}
         />
-      </div>
+      </Router>
     );
   }
 }

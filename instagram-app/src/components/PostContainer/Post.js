@@ -1,25 +1,58 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './PostContainer.css'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const Post = ({ thumbnailUrl, username, postImageUrl }) => {
+const PostUserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #efefef;
+`;
+
+const UserThumbnail = styled.img`
+  border-radius: 50%;
+  margin-right: 15px;
+`;
+
+const Username = styled.h5`
+  margin: 0;
+`;
+
+const PostImage = styled.div`
+  img {
+    width: 100%;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`;
+
+const Post = ({ thumbnailUrl, username, postImageUrl, postIndex }) => {
   return (
     <div>
-      <div className="post-user-info">
+      <PostUserInfo>
         <div>
-          <img
+          <UserThumbnail
             src={thumbnailUrl}
             alt="User thumbnail"
             width={32}
             height={32}
           />
         </div>
-        <h5>{username}</h5>
-      </div>
+        <Username>{username}</Username>
+      </PostUserInfo>
 
-      <div className="post-image">
-        <img src={postImageUrl} alt="Post" />
-      </div>
+      <StyledLink to={`/single-post/${postIndex}`}>
+        <PostImage>
+          <img src={postImageUrl} alt="Post" />
+        </PostImage>
+      </StyledLink>
     </div>
   )
 }

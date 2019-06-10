@@ -1,16 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { Route } from 'react-router-dom'
 import Post from './Post'
 import CommentSection from '../CommentSection/CommentSection'
-import './PostContainer.css'
 
-const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputChangeHandler, addNewCommentHandler, likePostHandler, deleteCommentHandler }) => {
+const PostContainerDiv = styled.div`
+  margin: 60px auto;
+  border: 1px solid #e6e6e6;
+  background-color: white;
+`;
+
+const PostContainer = ({ 
+  post, comments, newComment, postIndex, addCommentInputChangeHandler,
+  addNewCommentHandler, likePostHandler, deleteCommentHandler, postLiked }) => {
   return (
-    <div className="post-container">
+    <PostContainerDiv>
       <Post
         thumbnailUrl={post.thumbnailUrl}
         username={post.username}
         postImageUrl={post.imageUrl}
+        postIndex={postIndex}
       />
       <CommentSection
         comments={comments[postIndex]}
@@ -22,8 +32,10 @@ const PostContainer = ({ post, comments, newComment, postIndex, addCommentInputC
         addNewCommentHandler={addNewCommentHandler}
         likePostHandler={likePostHandler}
         deleteCommentHandler={deleteCommentHandler}
+        postLiked={postLiked}
       />
-    </div>
+      <Route path="/single-post/:postIndex" component={Post} />
+    </PostContainerDiv>
   )
 }
 

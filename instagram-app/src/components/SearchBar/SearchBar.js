@@ -5,12 +5,69 @@ import instagramLogo from '../../assets/img/instagram.svg'
 import compass from '../../assets/img/compass.svg'
 import like from '../../assets/img/heart.svg'
 import profile from '../../assets/img/profile.svg'
-import './SearchBar.css'
+import styled from 'styled-components'
+
+const SearchBarDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+`;
+
+const LogoHeader = styled.div`
+  display: flex;
+  align-items: center;
+
+  .logo-bar {
+  background-color: black;
+  height: 30px;
+  margin: 0 16px;
+  width: 1px;
+}
+`;
+
+const SearchInputDiv = styled.div`
+  input {
+    width: 200px;
+    background-color: #FAFAFA;
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+    height: 25px;
+  }
+
+  input::placeholder {
+    text-align: center;
+    color: #999999;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 500px) {
+    display: none;
+  }
+`;
+
+const UserActivityDiv = styled.div`
+  display: flex;
+
+  img {
+    padding-left: 30px;
+    border: 2px;
+  }
+`;
 
 const SearchBar = ({ searchQuery, searchInputChangeHandler }) => {
   return (
-    <div className="search-bar">
-      <div className="logo-section">
+    <SearchBarDiv>
+      <LogoHeader>
         <div>
           <img src={instagramLogo} width={28} alt="Instagram" />
         </div>
@@ -18,18 +75,18 @@ const SearchBar = ({ searchQuery, searchInputChangeHandler }) => {
         <div>
           <img src={instagramTextLogo} width={120} alt="Instagram" />
         </div>
-      </div>
+      </LogoHeader>
 
-      <div className="search-section">
+      <SearchInputDiv>
         <input
           type="text"
           placeholder="Search"
           value={searchQuery}
           onChange={searchInputChangeHandler}
         />
-      </div>
+      </SearchInputDiv>
 
-      <div className="user-activity-section">
+      <UserActivityDiv>
         <div>
           <img src={compass} width={25} alt="Location" />
           {/* <object type="image/svg+xml" width={25} data={compass} alt="Location">Some</object> */}
@@ -40,8 +97,8 @@ const SearchBar = ({ searchQuery, searchInputChangeHandler }) => {
         <div>
           <img src={profile} width={25} alt="Profile" />
         </div>        
-      </div>
-    </div>
+      </UserActivityDiv>
+    </SearchBarDiv>
   )
 }
 
